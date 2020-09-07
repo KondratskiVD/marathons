@@ -1,0 +1,31 @@
+@import "~bootstrap/scss/bootstrap";
+
+@import "./theme/sb-admin-2.scss";
+@import "./theme/_variables.scss";
+@import "./theme/_utilities";
+@import "./theme/_navs";
+@import "./theme/_mixins";
+@import "./theme/_login";
+@import "./theme/global";
+@import "./theme/_footer";
+@import "./theme/_error";
+@import "./theme/_dropdowns";
+@import "./theme/_charts";
+@import "./theme/_cards";
+@import "./theme/_buttons";
+
+@import "./theme/navs/_global";
+@import "./theme/navs/_sidebar";
+@import "./theme/navs/_topbar";
+
+@import "./theme/utilities/_animation";
+@import "./theme/utilities/_background";
+@import "./theme/utilities/_border";
+@import "./theme/utilities/_display";
+@import "./theme/utilities/_progress";
+@import "./theme/utilities/_rotate";
+@import "./theme/utilities/_text";
+
+@import "_custom.scss";
+
+
