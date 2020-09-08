@@ -3,6 +3,7 @@ const cors = require('cors');
 const express = require('express')
 const morgan = require('morgan')
 require('dotenv').config()
+const sequelize = require('./DB_connect')
 
 const bodyParser = require('body-parser');
 const app = express()
@@ -17,6 +18,15 @@ app.use('/api/user', require('./routes/user'));
 app.use('/api/categories', require('./routes/category'));
 app.use('/api/marathons', require('./routes/marathon'));
 
-app.listen(app.get('port'), () => {
-  console.log(`[OK] Server is running on localhost:${app.get('port')}`);
-});
+async function start() {
+  try {
+    // await sequelize.sync({force:true})
+    app.listen(app.get('port'), () => {
+      console.log(`[OK] Server is running on localhost:${app.get('port')}`);
+    });
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+start()

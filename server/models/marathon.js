@@ -2,27 +2,32 @@ const Sequelize = require('sequelize')
 const sequelize = require('../DB_connect.js')
 
 const marathon = sequelize.define('marathons', {
-  marathons_id: {
+  id: {
     primaryKey: true,
     autoIncrement: true,
     allowNull: false,
     type: Sequelize.INTEGER
   },
-  marathons_title: {
+  title: {
     type: Sequelize.STRING,
     allowNull: false
   },
-  marathons_start: {
+  startDate: {
     type: Sequelize.DATE,
     allowNull: false
   },
-  marathons_finish: {
+  finishDate: {
+    type: Sequelize.DATE,
+    allowNull: false
+  },
+  categoryId: {
     type: Sequelize.INTEGER,
     allowNull: false
   },
-  category_id: {
-    type: Sequelize.DATE,
+  type: {
+    type: Sequelize.STRING,
     allowNull: false
   },
 })
+
 module.exports = marathon

@@ -19,7 +19,6 @@
           <!-- End of Topbar -->
 
           <!-- Begin Page Content -->
-          <div class="container-fluid">
 
             <!-- Page Heading -->
             <router-view/>
@@ -105,7 +104,6 @@
 <!--              </div>-->
 <!--            </div>-->
 
-          </div>
           <!-- /.container-fluid -->
 
         </div>

@@ -51,7 +51,8 @@ const store = new Vuex.Store({
             resolve(resp)
           })
           .catch(err => {
-            commit('setError','Неправильный пароль')
+            commit('clearError')
+            commit('setError', err.response.data.message)
             commit('auth_error')
             localStorage.removeItem('token')
             reject(err)
@@ -73,7 +74,8 @@ const store = new Vuex.Store({
             resolve(resp)
           })
           .catch(err => {
-            commit('setError', err)
+            commit('clearError')
+            commit('setError', err.response.data.message)
             commit('auth_error', err)
             localStorage.removeItem('token')
             reject(err)
@@ -93,9 +95,11 @@ const store = new Vuex.Store({
     isLoggedIn: state => !!state.token,
     authStatus: state => state.status,
     fullName: state => {
-      return state.user.user_first_name + ' ' + state.user.user_second_name
+      return state.user.firstName + ' ' + state.user.secondName
     },
-    error: s => s.error
+    userRole: state => state.user.role,
+    error: state => state.error,
+    userId: state => state.user.id
   },
   plugins: [createPersistedState()]
 })

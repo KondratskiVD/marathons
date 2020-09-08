@@ -4,6 +4,7 @@ import store from './store.js'
 import App from './App.vue'
 import Axios from 'axios'
 import messagePlugin from './utils/toastPlugin.js'
+import dateFilter from './filters/date.filter.js'
 
 Vue.prototype.$http = Axios;
 const token = localStorage.getItem('token')
@@ -16,6 +17,7 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(messagePlugin)
+Vue.filter('formateDate', dateFilter)
 
 import Vuelidate from 'vuelidate'
 Vue.use(Vuelidate)

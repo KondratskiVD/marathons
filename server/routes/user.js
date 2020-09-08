@@ -22,15 +22,15 @@ router.get('/', async (req, res) => {
 router.post('/registration', async (req, res) => {
   try {
     let userData = {
-      user_email: req.body.user_email,
+      email: req.body.user_email,
       password: req.body.password,
-      user_first_name: req.body.user_first_name,
-      user_second_name: req.body.user_second_name,
-      user_role: req.body.user_role
+      firstName: req.body.user_first_name,
+      secondName: req.body.user_second_name,
+      role: req.body.user_role
     }
     await User.findOne({
       where: {
-        user_email: req.body.user_email
+        email: req.body.user_email
       }
     }).then(user => {
       if(!user) {
@@ -45,7 +45,7 @@ router.post('/registration', async (req, res) => {
             res.send('error from server: ' + err)
           })
       } else {
-        res.status(500).json({
+        res.status(500).send({
           message:'Пользователь с таким именем уже существует.'})
       }
     })
@@ -61,21 +61,20 @@ router.post('/login', async (req, res) => {
   try {
     await User.findOne({
       where: {
-        user_email: req.body.user_email
+        email: req.body.user_email
       }
     }).then(user => {
       if(bcrypt.compareSync(req.body.password, user.password)) {
         let token = jwt.sign( user.dataValues, process.env.SECRET_KEY, {expiresIn: 1440})
         res.json({token: token, auth: true, user })
       } else {
-        res.status(500).json({
-          message:'Неправильный пароль'})
+        res.status(500).send({ message: 'Неправильный пароль.' });
       }
     })
   } catch (e) {
     console.log(e)
-    res.status(500).json({
-      message: `${req.body.user_email} Пользователь не существует`
+    res.status(500).send({
+      message: `Пользователь ${req.body.user_email} не существует.`
     })
   }
 })

@@ -2,13 +2,13 @@ const Sequelize = require('sequelize')
 const sequelize = require('../DB_connect.js')
 
 const user = sequelize.define('users', {
-  user_id: {
+  id: {
     primaryKey: true,
     autoIncrement: true,
     allowNull: false,
     type: Sequelize.INTEGER
   },
-  user_email: {
+  email: {
     type: Sequelize.STRING,
     allowNull: false
   },
@@ -16,15 +16,15 @@ const user = sequelize.define('users', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  user_first_name: {
+  firstName: {
     type: Sequelize.STRING,
     allowNull: false
   },
-  user_second_name: {
+  secondName: {
     type: Sequelize.STRING,
     allowNull: false
   },
-  user_role: {
+  role: {
     type: Sequelize.STRING,
     allowNull: false
   },

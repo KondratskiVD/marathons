@@ -3,7 +3,7 @@ export default function dateFilter(value, format = 'date'){
 
   if(format.includes('date')){
     options.day = '2-digit' // вид отображения даты
-    options.month = 'long'
+    options.month = '2-digit'
     options.year = 'numeric'
   }
   if(format.includes('time')){

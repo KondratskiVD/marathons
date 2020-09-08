@@ -152,11 +152,11 @@ export default {
         password: this.password,
         user_first_name: this.user_first_name,
         user_second_name: this.user_second_name,
-        user_role: 'marathon_runner'
+        user_role: 'марафонец'
       }
       this.$store.dispatch('register', {vm: this, user})
           .then(() => {
-            this.$router.push('/')
+            this.$router.push('/welcome')
           })
           .catch(err => console.log(err))
     }

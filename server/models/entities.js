@@ -1,10 +1,9 @@
-const relations_UM = require('./user_marathon_relations.js')
-const Marathon = require('./marathon.js')
-const User = require('./user.js')
-
 const entities = {
-  A: require('./src/Entity/A'),
-  B: require('./src/Entity/B'),
+  Marathon: require('./marathon.js'),
+  User: require('./user.js'),
+  relationsUM: require('./user_marathon_relations.js')
 };
-entities.Marathon.belongsToMany(User, {through: relations_UM});
-entities.User.belongsToMany(Marathon, {through: relations_UM});
+entities.Marathon.belongsToMany(entities.User, {through: entities.relationsUM});
+entities.User.belongsToMany(entities.Marathon, {through: entities.relationsUM});
+
+module.exports = entities
